@@ -18,7 +18,9 @@ if __name__ == "__main__":
     # 构造测试集
     suite = unittest.TestSuite()
     suite.addTest(case.MyTestSuite("testbaidu"))
-    suite.addTest(case.MyTestSuite("testitao"))
+    suite.addTest(case.MyTestSuite("getToken"))
+    suite.addTest(case.MyTestSuite("getTreeRanking"))
+    #suite.addTest(case.MyTestSuite("dailyrecommendsMtop"))
 
     # 3、打开一个文件，将result写入此file中
     fp = open(report_nowpath, "wb")
@@ -27,9 +29,11 @@ if __name__ == "__main__":
                                            description=u'用例执行情况：')
 
     # 执行测试
-    #runner = unittest.TextTestRunner()
+    runner = unittest.TextTestRunner()
     reporthtml.run(suite)
     fp.close()
+
+    HTMLTestRunner.main()
 
 
 
